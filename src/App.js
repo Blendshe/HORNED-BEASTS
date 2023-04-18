@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+import Modal from "./Modal";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  function handleModal() {
+    setShowModal(!showModal);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <h1>This is my modal website</h1> */}
+      {/* <button onClick={handleModal}>Trigger modal</button>  */}
+      <Header />
+      {showModal && <Modal handleModal={handleModal} />}
+      <Main handleModal={handleModal} />
+      <Footer />
     </div>
   );
 }
